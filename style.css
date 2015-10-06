@@ -1,10 +1,26 @@
 body {
-	font-family: 'Alegreya', serif;
-	background-color: orange;
+	background-color: #FFD6C7;
 }
 
 h1 {
 	text-align: center;
+	color: #FF77A4;
+	font-family: 'Alegreya', serif;
+}
+
+h3 {
+	font-family: Georgia, Times, serif;
+	color: #AF9CA9;
+}
+
+ul {
+	font-family: Helvetica, sans-serif;
+	color: #353A53;
+}
+
+p {
+	font-family: Georgia, Times, serif;
+	color: #AE9DAF;
 }
 
 .salmon {
