@@ -10,12 +10,12 @@ var CookieStand = function(place, minCustHour, maxCustHour, avgCookiesCust, dail
 	this.randCustHour = function(min, max) {							//calcuate our random number of cust/hour based on min/max
 		return Math.floor(Math.random() * (max - min +1)) + min;
 	};
-	this.totalCookieHour = function() {
+	this.totalCookiesHour = function() {
         return (Math.floor(this.randCustHour(this.minCustHour, this.maxCustHour) * this.avgCookiesCust));
     };
     this.totalCookiesDay = function () {
         for (var i = 0; i < 8; i++) {
-            this.cookiesByHourList.push(this.totalCookieHour());
+            this.cookiesByHourList.push(this.totalCookiesHour());
             this.dailyCookies = this.dailyCookies + this.cookiesByHourList[i];
             // console.log ("24-hour time: " + (i + 10));
             // console.log ("cookies this hour: " + this.cookiesByHourList[i]);

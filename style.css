@@ -8,6 +8,11 @@ h1 {
 	font-family: 'Alegreya', serif;
 }
 
+h2 {
+	color: #5166AF;
+	font-family: 'Alegreya', serif;
+}
+
 h3 {
 	font-family: Georgia, Times, serif;
 	color: #AF9CA9;
@@ -20,7 +25,7 @@ ul {
 
 p {
 	font-family: Georgia, Times, serif;
-	color: #AE9DAF;
+	color: #9F5AAF;
 }
 
 .salmon {
