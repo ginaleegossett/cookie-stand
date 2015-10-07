@@ -17,19 +17,13 @@ var CookieStand = function(place, minCustHour, maxCustHour, avgCookiesCust, dail
         for (var i = 0; i < 8; i++) {
             this.cookiesByHourList.push(this.totalCookiesHour());
             this.dailyCookies = this.dailyCookies + this.cookiesByHourList[i];
-            // console.log ("24-hour time: " + (i + 10));
-            // console.log ("cookies this hour: " + this.cookiesByHourList[i]);
-            // console.log ("total cookies each hour so far: " + dailyCookies);
-            // console.log (this.cookiesByHourList);
-            // console.log ("++++++++++++++++++++");
         }
         return this.dailyCookies;
     };
 
-
     this.makeUL = function(array) {
         this.totalCookiesDay();
-        // connect the list to the JS; this is where your list will appear
+
         var ul = document.getElementById(this.ul);
 
         for(var i = 0; i < 8; i++) {
