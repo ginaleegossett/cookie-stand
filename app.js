@@ -1,159 +1,56 @@
+var CookieStand = function(place, minCustHour, maxCustHour, avgCookiesCust, dailyCookies, ul) {
+    this.place = place;
+    this.minCustHour = minCustHour;
+    this.maxCustHour = maxCustHour;
+    this.avgCookiesCust = avgCookiesCust;
+    this.dailyCookies = dailyCookies;
+    this.cookiesByHourList = [];
+    this.ul = ul;
 
-
-var hoursOps = ['10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm'];
-
-var pikePlace = {
-	location: 'Pike Place Market', 
-	minCustHour: 17,
-	maxCustHour: 88,
-	avgCookiesCust: 5.2,
-	randCustHour: function(min, max) {							//calcuate our random number of cust/hour based on min/max
+	this.randCustHour = function(min, max) {							//calcuate our random number of cust/hour based on min/max
 		return Math.floor(Math.random() * (max - min +1)) + min;
-	},
-	totalCookieHour: function() {
+	};
+	this.totalCookiesHour = function() {
         return (Math.floor(this.randCustHour(this.minCustHour, this.maxCustHour) * this.avgCookiesCust));
-    },
-    makeUL: function(array) {
-        for(var i = 0; i < array.length; i++) {
+    };
+    this.totalCookiesDay = function () {
+        for (var i = 0; i < 8; i++) {
+            this.cookiesByHourList.push(this.totalCookiesHour());
+            this.dailyCookies = this.dailyCookies + this.cookiesByHourList[i];
+        }
+        return this.dailyCookies;
+    };
 
-        // connect the list to the JS; this is where your list will appear
-        var ul = document.getElementById('pike');
+    this.makeUL = function(array) {
+        this.totalCookiesDay();
 
-        // Create the list item:
-        var item = document.createElement('li');
+        var ul = document.getElementById(this.ul);
 
-        // Set its contents:
-        item.appendChild(document.createTextNode(array[i] + ': ' + this.totalCookieHour() + ' cookies'));
+        for(var i = 0; i < 8; i++) {
+            var li1 = document.createElement('li');
+            li1.appendChild(document.createTextNode(array[i] + ': ' + this.cookiesByHourList[i] + ' cookies'));
+            ul.appendChild(li1);
+        }
 
-        // Add it to the list:
-        ul.appendChild(item);
-    }
-}
-
+        var li2 = document.createElement('li');
+        li2.appendChild(document.createTextNode(array[8] + ': ' + this.dailyCookies + ' cookies'));
+        ul.appendChild(li2);
+    };   
 };
 
-var seaTac = {
-    location: 'SeaTac Airport', 
-    minCustHour: 6,
-    maxCustHour: 44,
-    avgCookiesCust: 1.2,
-    randCustHour: function(min, max) {                          //calcuate our random number of cust/hour based on min/max
-        return Math.floor(Math.random() * (max - min +1)) + min;
-    },
-    totalCookieHour: function() {
-        return (Math.floor(this.randCustHour(this.minCustHour, this.maxCustHour) * this.avgCookiesCust));
-    },
-    makeUL: function(array) {
-        for(var i = 0; i < array.length; i++) {
+var hoursOps = ['10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', 'Total'];
 
-        // connect the list to the JS; this is where your list will appear
-        var ul = document.getElementById('seatac');
-
-        // Create the list item:
-        var item = document.createElement('li');
-
-        // Set its contents:
-        item.appendChild(document.createTextNode(array[i] + ': ' + this.totalCookieHour() + ' cookies'));
-
-        // Add it to the list:
-        ul.appendChild(item);
-    }
-}
-
-};
-
-var southCenter = {
-    location: 'South Center Mall', 
-    minCustHour: 11,
-    maxCustHour: 38,
-    avgCookiesCust: 1.9,
-    randCustHour: function(min, max) {                          //calcuate our random number of cust/hour based on min/max
-        return Math.floor(Math.random() * (max - min +1)) + min;
-    },
-    totalCookieHour: function() {
-        return (Math.floor(this.randCustHour(this.minCustHour, this.maxCustHour) * this.avgCookiesCust));
-    },
-    makeUL: function(array) {
-        for(var i = 0; i < array.length; i++) {
-
-        // connect the list to the JS; this is where your list will appear
-        var ul = document.getElementById('southcenter');
-
-        // Create the list item:
-        var item = document.createElement('li');
-
-        // Set its contents:
-        item.appendChild(document.createTextNode(array[i] + ': ' + this.totalCookieHour() + ' cookies'));
-
-        // Add it to the list:
-        ul.appendChild(item);
-    }
-}
-
-};
-
-var bellSquare = {
-    location: 'Bellevue Square', 
-    minCustHour: 20,
-    maxCustHour: 48,
-    avgCookiesCust: 3.3,
-    randCustHour: function(min, max) {                          //calcuate our random number of cust/hour based on min/max
-        return Math.floor(Math.random() * (max - min +1)) + min;
-    },
-    totalCookieHour: function() {
-        return (Math.floor(this.randCustHour(this.minCustHour, this.maxCustHour) * this.avgCookiesCust));
-    },
-    makeUL: function(array) {
-        for(var i = 0; i < array.length; i++) {
-
-        // connect the list to the JS; this is where your list will appear
-        var ul = document.getElementById('bellevue');
-
-        // Create the list item:
-        var item = document.createElement('li');
-
-        // Set its contents:
-        item.appendChild(document.createTextNode(array[i] + ': ' + this.totalCookieHour() + ' cookies'));
-
-        // Add it to the list:
-        ul.appendChild(item);
-    }
-}
-
-};
-
-var alki = {
-    location: 'Alki', 
-    minCustHour: 3,
-    maxCustHour: 24,
-    avgCookiesCust: 2.6,
-    randCustHour: function(min, max) {                          //calcuate our random number of cust/hour based on min/max
-        return Math.floor(Math.random() * (max - min +1)) + min;
-    },
-    totalCookieHour: function() {
-        return (Math.floor(this.randCustHour(this.minCustHour, this.maxCustHour) * this.avgCookiesCust));
-    },
-    makeUL: function(array) {
-        for(var i = 0; i < array.length; i++) {
-
-        // connect the list to the JS; this is where your list will appear
-        var ul = document.getElementById('alki');
-
-        // Create the list item:
-        var item = document.createElement('li');
-
-        // Set its contents:
-        item.appendChild(document.createTextNode(array[i] + ': ' + this.totalCookieHour() + ' cookies'));
-
-        // Add it to the list:
-        ul.appendChild(item);
-    }
-}
-
-};
-
+var pikePlace = new CookieStand('Pike Place Market', 17, 88, 5.2, 0, 'pike');
 pikePlace.makeUL(hoursOps);
+
+var seaTac = new CookieStand('SeaTac Airport', 6, 44, 1.2, 0, 'seatac');
 seaTac.makeUL(hoursOps);
+
+var southCenter = new CookieStand('Southcenter Mall', 11, 38, 1.9, 0, 'southcenter');
 southCenter.makeUL(hoursOps);
-bellSquare.makeUL(hoursOps);
+
+var bellSquare = new CookieStand('Bellevue Square', 20, 48, 3.3, 0, 'bellevue');
+bellSquare.makeUL(hoursOps); 
+
+var alki = new CookieStand('Alki Beach', 3, 24, 2.6, 0, 'alki');
 alki.makeUL(hoursOps);
