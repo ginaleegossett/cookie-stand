@@ -2,6 +2,13 @@ body {
 	background-color: #D6DCEA;
 }
 
+div.one {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
 h1 {
 	text-align: center;
 	color: #8F7C7E;
