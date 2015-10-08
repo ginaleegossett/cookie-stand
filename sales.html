@@ -13,12 +13,12 @@
 	<table>
 		<tr>
 			<th></th>
-			<th scope="col">Pike Place Market</th>	
-			<th scope="col">Seatac Airport</th>	
+			<th scope="col">Pike Place Market</th>
+			<th scope="col">Seatac Airport</th>
 			<th scope="col">Southcenter Mall</th>
 			<th scope="col">Bellevue Square</th>
 			<th scope="col">Alki</th>
-		</tr>	
+		</tr>
 
 		<tr>
 			<th scope="row"></th>
@@ -28,7 +28,22 @@
 			<td><ul id="bellevue"></ul></td>
 			<td><ul id="alki"></ul></td>
 		</tr>
-</table>
+	</table>
+
+	<form id='newLocation'>
+		<p>Please enter location information here: </p>
+		<p>Location Name:
+			<input type='text' name='locName' size='30' /></p>
+		<p>Minimum customers per hour:
+			<input type='text' name='minCust' size='30' /></p>
+		<p>Maximum customers per hour:
+			<input type='text' name='maxCust' size='30' /></p>
+		<p>Average cookies per hour:
+			<input type='text' name='avgCookies' size='30' /></p>
+
+		<button id='newLocInfo' type='click'>Enter</button>
+
+	</form>
 
 	<script src="app.js"></script>
 </body>
