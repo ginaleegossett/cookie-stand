@@ -1,24 +1,24 @@
 body {
-	background-color: #D6DCEA;
+	background-color: #65767F;
 }
 
 div.one {
 	padding-top: 5px;
 	padding-bottom: 5px;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding-left: 40px;
+	padding-right: 40px;
 }
 
 h1 {
 	text-align: center;
-	color: #8F7C7E;
+	color: #FFC9BD;
 	font-family: 'Alegreya', serif;
 	font-size: 200%;
 }
 
 h2 {
 	text-align: center;
-	color: #D9A2A5;
+	color: #FFC9BD;
 	font-family: 'Calibri', sans-serif;
 	font-weight: normal;
 	font-size: 100%;
@@ -55,7 +55,8 @@ p.two {
 
 p.three {
 	width: 250px;
-	border: 5px;
+	padding: 5px;
+	border-width: 2px;
 	font-family: Georgia, Times, serif;
 	font-weight: bold;
 	text-align: center;

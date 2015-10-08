@@ -21,6 +21,14 @@ var CookieStand = function(place, minCustHour, maxCustHour, avgCookiesCust, dail
         return this.dailyCookies;
     };
 
+    // this.makeTable = function(array) {
+    //     this.totalCookiesDay();
+
+    //     var salesTable = document.getElementById(this.salesTable);
+
+        
+    // }
+
     this.makeUL = function(array) {
         this.totalCookiesDay();
 
