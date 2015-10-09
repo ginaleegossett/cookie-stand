@@ -10,36 +10,31 @@
 
 	<img src="img/salmon.png" width="300" class="salmon"/><br /><br />
 
-	<table>
-		<tr>
-			<th></th>
-			<th scope="col">Pike Place Market</th>
-			<th scope="col">Seatac Airport</th>
-			<th scope="col">Southcenter Mall</th>
-			<th scope="col">Bellevue Square</th>
-			<th scope="col">Alki</th>
-		</tr>
 
-		<tr>
-			<th scope="row"></th>
-			<td><ul id="pike"></ul></td>
-			<td><ul id="seatac"></ul></td>
-			<td><ul id="southcenter"></ul></td>
-			<td><ul id="bellevue"></ul></td>
-			<td><ul id="alki"></ul></td>
-		</tr>
+	<table id='stupidTable'>
+		<th class="one">Store Location</th>
+		<th>10am</th>
+		<th>11am</th>
+		<th>12pm</th>
+		<th>1pm</th>
+		<th>2pm</th>
+		<th>3pm</th>
+		<th>4pm</th>
+		<th>5pm</th>
+		<th>Total</th>
 	</table>
 
+
 	<form id='newLocation'>
-		<p>Please enter location information here: </p>
-		<p>Location Name:
-			<input type='text' name='locName' size='30' /></p>
-		<p>Minimum customers per hour:
-			<input type='text' name='minCust' size='30' /></p>
-		<p>Maximum customers per hour:
-			<input type='text' name='maxCust' size='30' /></p>
-		<p>Average cookies per hour:
-			<input type='text' name='avgCookies' size='30' /></p>
+		<p class="one">Please enter location information here: </p>
+		<p class="one">Location Name:
+			<input type='text' id='locName' size='30' /></p>
+		<p class="one">Minimum customers per hour:
+			<input type='text' id='minCust' size='30' /></p>
+		<p class="one">Maximum customers per hour:
+			<input type='text' id='maxCust' size='30' /></p>
+		<p class="one">Average cookies per hour:
+			<input type='text' id='avgCookies' size='30' /></p>
 
 		<button id='newLocInfo' type='click'>Enter</button>
 
@@ -48,3 +43,23 @@
 	<script src="app.js"></script>
 </body>
 </html>
+
+
+
+<!-- <tr>
+			<th></th>
+			<th id="pike"></th>
+			<th scope="col">Seatac Airport</th>
+			<th scope="col">Southcenter Mall</th>
+			<th scope="col">Bellevue Square</th>
+			<th scope="col">Alki</th>
+		</tr>
+
+		<tr>
+			<th scope="row"></th>
+			<td id="pike"></td>
+			<td><ul id="seatac"></ul></td>
+			<td><ul id="southcenter"></ul></td>
+			<td><ul id="bellevue"></ul></td>
+			<td><ul id="alki"></ul></td>
+		</tr> -->
