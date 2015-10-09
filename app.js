@@ -1,11 +1,12 @@
-var CookieStand = function(place, minCustHour, maxCustHour, avgCookiesCust, dailyCookies, ul) {
+var hoursOps = ['Location', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', 'Total'];
+
+var CookieStand = function(place, minCustHour, maxCustHour, avgCookiesCust) {
     this.place = place;
     this.minCustHour = minCustHour;
     this.maxCustHour = maxCustHour;
     this.avgCookiesCust = avgCookiesCust;
-    this.dailyCookies = dailyCookies;
     this.cookiesByHourList = [];
-    this.ul = ul;
+
 
 	this.randCustHour = function(min, max) {							//calcuate our random number of cust/hour based on min/max
 		return Math.floor(Math.random() * (max - min +1)) + min;
@@ -14,51 +15,79 @@ var CookieStand = function(place, minCustHour, maxCustHour, avgCookiesCust, dail
         return (Math.floor(this.randCustHour(this.minCustHour, this.maxCustHour) * this.avgCookiesCust));
     };
     this.totalCookiesDay = function () {
+        var myStupidCookies = 0
         for (var i = 0; i < 8; i++) {
             this.cookiesByHourList.push(this.totalCookiesHour());
-            this.dailyCookies = this.dailyCookies + this.cookiesByHourList[i];
+            myStupidCookies = myStupidCookies + this.cookiesByHourList[i];
         }
-        return this.dailyCookies;
+        return myStupidCookies;
     };
 
-    // this.makeTable = function(array) {
-    //     this.totalCookiesDay();
-
-    //     var salesTable = document.getElementById(this.salesTable);
-
-        
-    // }
-
-    this.makeUL = function(array) {
+    // this will make our table for our sales.html
+    this.makeTable = function(array) {
         this.totalCookiesDay();
 
-        var ul = document.getElementById(this.ul);
+        var salesTable = document.getElementById('stupidTable');
 
-        for(var i = 0; i < 8; i++) {
-            var li1 = document.createElement('li');
-            li1.appendChild(document.createTextNode(array[i] + ': ' + this.cookiesByHourList[i] + ' cookies'));
-            ul.appendChild(li1);
+        var stupidRow = document.createElement('tr');
+
+        var where = document.createElement('td');
+            where.appendChild(document.createTextNode(this.place));
+            stupidRow.appendChild(where);
+            where.className = "where"
+            
+
+        for (var j = 0; j < this.cookiesByHourList.length; j++) {
+            var where = document.createElement('td');
+            where.appendChild(document.createTextNode(this.cookiesByHourList[j]));
+            stupidRow.appendChild(where);
         }
 
-        var li2 = document.createElement('li');
-        li2.appendChild(document.createTextNode(array[8] + ': ' + this.dailyCookies + ' cookies'));
-        ul.appendChild(li2);
-    };   
+        var where = document.createElement('td');
+        where.appendChild(document.createTextNode(this.totalCookiesDay()));
+        stupidRow.appendChild(where);
+
+        stupidTable.appendChild(stupidRow);
+
+    };
+
 };
 
-var hoursOps = ['10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', 'Total'];
+var newLocation = function(event) {
+    event.preventDefault();
+    var locName = document.getElementById('locName');
+    var minCust = document.getElementById('minCust');
+    var maxCust = document.getElementById('maxCust');
+    var avgCookies = document.getElementById('avgCookies');
 
-var pikePlace = new CookieStand('Pike Place Market', 17, 88, 5.2, 0, 'pike');
-pikePlace.makeUL(hoursOps);
+    console.log(locName.value);
+    console.log(minCust.value);
+    console.log(maxCust.value);
+    console.log(avgCookies.value);
 
-var seaTac = new CookieStand('SeaTac Airport', 6, 44, 1.2, 0, 'seatac');
-seaTac.makeUL(hoursOps);
+    var newStore = new CookieStand(locName.value, minCust.value, maxCust.value, avgCookies.value);
 
-var southCenter = new CookieStand('Southcenter Mall', 11, 38, 1.9, 0, 'southcenter');
-southCenter.makeUL(hoursOps);
+    newStore.makeTable();
+};
 
-var bellSquare = new CookieStand('Bellevue Square', 20, 48, 3.3, 0, 'bellevue');
-bellSquare.makeUL(hoursOps); 
 
-var alki = new CookieStand('Alki Beach', 3, 24, 2.6, 0, 'alki');
-alki.makeUL(hoursOps);
+var newButton = document.getElementById('newLocInfo');
+newButton.addEventListener('click', newLocation);
+
+
+var pikePlace = new CookieStand('Pike Place Market', 17, 88, 5.2, 'pike');
+
+var seaTac = new CookieStand('SeaTac Airport', 6, 44, 1.2, 'seatac');
+
+var southCenter = new CookieStand('Southcenter Mall', 11, 38, 1.9, 'southcenter');
+
+var bellSquare = new CookieStand('Bellevue Square', 20, 48, 3.3, 'bellevue');
+
+var alki = new CookieStand('Alki Beach', 3, 24, 2.6, 'alki');
+
+pikePlace.makeTable();
+seaTac.makeTable();
+southCenter.makeTable();
+bellSquare.makeTable();
+alki.makeTable();
+

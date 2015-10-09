@@ -1,3 +1,36 @@
+
+
+/*For the sales.html*/
+
+table {
+	width: 45%;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+	font-family: Georgia, Times, serif;
+	color: #AF9C9E;
+}
+
+/*th {
+	padding-left: 5px;
+	padding-right: 5px;
+}*/
+
+form {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+th.one {
+	text-align: left;
+}
+
+td.where {
+	text-align: left;
+}
+
+/*For the index.html*/
+
 body {
 	background-color: #65767F;
 }
