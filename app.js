@@ -60,6 +60,14 @@ var newLocation = function(event) {
     var maxCust = document.getElementById('maxCust');
     var avgCookies = document.getElementById('avgCookies');
 
+    if (!locName) {
+        return alert ('You must enter a location name');
+    }
+
+    else if (minCust.value > maxCust.value) {
+        return alert ('Please make sure the maximum customer number is larger than minimum');
+    }
+
     console.log(locName.value);
     console.log(minCust.value);
     console.log(maxCust.value);
