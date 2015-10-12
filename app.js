@@ -64,7 +64,7 @@ var newLocation = function(event) {
         return alert ('You must enter a location name');
     }
 
-    else if (minCust.value > maxCust.value) {
+    else if (minCust.value < maxCust.value) {
         return alert ('Please make sure the maximum customer number is larger than minimum');
     }
 
